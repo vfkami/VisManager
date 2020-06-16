@@ -1,0 +1,62 @@
+sigla,lat,long,nome,score,raio,profundidade,calor
+heatmark1,-1.47551,-48.45385,Atelier de Artes,0.958943771,25,12,1105
+heatmark2,-1.47505,-48.44983,Auditorio Jose Vicente Miranda Filho (Auditorio ICJ),0.585420262,30,16,72
+heatmark3,-1.47523,-48.45691,Auditorio Setorial Basico,0.151471134,19,28,246
+heatmark4,-1.47265,-48.45194,Auditorio Setorial Profissional,0.748771534,29,10,577
+heatmark5,-1.47512,-48.45531,Base da Prestadora de Servicos Paraiso,0.748962746,12,16,857
+heatmark6,-1.47223,-48.45661,Biblioteca Central Prof. Dr. Clodoaldo Beckmann,0.439832824,12,38,1029
+heatmark7,-1.47702,-48.45922,Biblioteca do Instituto de Educacao Matematica e Cientifica (IEMCI),0.89255741,25,17,1074
+heatmark8,-1.46430,-48.45808,Biblioteca do Instituto de Geociencias,0.000462901,16,11,1188
+heatmark9,-1.47542,-48.45764,Bioterio,0.425035717,30,39,59
+heatmark10,-1.47121,-48.45708,Bloco A - Setorial Basico,0.127403725,16,40,336
+heatmark11,-1.47395,-48.45713,Bloco B - Setorial Basico,0.064329053,30,19,607
+heatmark12,-1.47361,-48.45766,Bloco C - Setorial Basico,0.830072058,23,20,545
+heatmark13,-1.47189,-48.45715,Bloco D - Setorial Basico,0.789557316,27,13,751
+heatmark14,-1.47121,-48.45106,Bloco de Aulas - Setorial Profissional,0.789102578,15,21,885
+heatmark15,-1.47232,-48.44997,Bloco de Aulas II - Setorial Profissional,0.758939194,30,17,414
+heatmark16,-1.47095,-48.45565,Bloco E - Setorial Basico,0.865091863,25,10,145
+heatmark17,-1.47099,-48.45903,Bloco F - Setorial Basico,0.105399043,25,32,963
+heatmark18,-1.47175,-48.45720,Bloco G - Setorial Basico,0.699941033,27,26,473
+heatmark19, -1.47394,-48.45840,Bloco H - Setorial Basico,0.663348084,17,28,800
+heatmark20,-1.47324,-48.44542,Bloco I - Setorial Basico,0.096307238,19,34,1047
+heatmark21,-1.47215,-48.45283,Bloco J - Setorial Basico,0.954084631,30,11,1198
+heatmark22,-1.47049,-48.44667,Bloco K - Setorial Basico,0.56280338,22,10,787
+heatmark23,-1.46945,-48.45286,Bloco L - Setorial Basico,0.974576426,29,27,728
+heatmark24,-1.46372,-48.45396,Bloco M - Setorial Basico,0.833522152,12,37,1193
+heatmark25,-1.47234,-48.44740,Bloco N - Setorial Basico,0.05211645,26,29,182
+heatmark26,-1.47348,-48.44617,Bloco O - Setorial Basico,0.533668669,11,13,598
+heatmark27,-1.47457,-48.45679,Bloco P - Setorial Basico,0.175542982,24,19,550
+heatmark28,-1.47527,-48.44615,Bloco Q - Setorial Basico,0.081327951,28,26,1124
+heatmark29,-1.47723,-48.44737,Capela Universitaria,0.322659167,13,10,1198
+heatmark30,-1.46953,-48.44669,Centro de Atencao à Saúde da Mulher e da Crianca (CASMUC),0.125836166,15,14,1173
+heatmark31,-1.46627,-48.45787,Centro de Estudos Avancados da Biodiversidade (CEABIO),0.846704687,22,12,202
+heatmark32,-1.47511,-48.45556,Centro de Eventos Benedito Nunes (Hangarzinho),0.980888233,17,12,1153
+heatmark33,-1.46839,-48.45751,Centro de Excelencia em Eficiencia Energetica da Amazonia (CEAMAZON),0.091961413,16,12,868
+heatmark34,-1.46839,-48.44592,Centro de Genomica e Biologia de Sistemas,0.655520109,30,25,1034
+heatmark35,-1.47622,-48.44682,Centro de Indicadores Academicos (CIAC),0.026599217,10,23,143
+heatmark36,-1.47521,-48.44536,Centro de Tecnologia da Informacao e Comunicacao (CTIC),0.094160402,16,30,587
+heatmark37,-1.47504,-48.45675,Chale de Ferro,0.045866931,27,33,719
+heatmark38,-1.47266,-48.45763,Clinica de Psicologia,0.937206397,14,12,273
+heatmark39,-1.47765,-48.45632,Clube de Ciencias da UFPA (CCIUFPA),0.473763927,17,33,212
+heatmark40,-1.47737,-48.45765,Coordenadoria de Capacitacao e Desenvolvimento (CAPACIT),0.899126442,26,10,634
+heatmark41,-1.47711,-48.45716,Editora Universitaria,0.820933843,17,10,979
+heatmark42,-1.47711,-48.45765,Espaco Inovacao,0.880873727,15,12,942
+heatmark43,-1.47266,-48.45727,Faculdade de Arquitetura e Urbanismo,0.72435896,17,25,535
+heatmark44,-1.47765,-48.45777,Faculdade de Enfermagem,0.547477925,24,19,343
+heatmark45,-1.47737,-48.45762,Faculdade de Engenharia Mecanica,0.558562234,10,29,703
+heatmark46,-1.47711,-48.45736,Faculdade de Engenharia Sanitaria e Ambiental,0.786655613,26,40,703
+heatmark47,-1.47711,-48.45719,Faculdade de Farmacia,0.596022578,24,26,110
+heatmark48,-1.47411,-48.45775,Faculdade de Fisioterapia e Terapia Ocupacional,0.948763756,28,16,849
+heatmark49,-1.47389,-48.45729,Faculdade de Geofisica,0.201377838,12,28,716
+heatmark50,-1.47689,-48.45732,Faculdade de Nutricao,0.533460182,19,13,99
+heatmark51,-1.47680,-48.45755,Faculdade de Odontologia,0.334537562,25,39,1032
+heatmark52,-1.47665,-48.45727,Farma Orto,0.537953208,28,19,1147
+heatmark53,-1.47661,-48.45548,Fundacao de Amparo e Desenvolvimento da Pesquisa (FADESP),0.293950282,12,37,767
+heatmark54,-1.47644,-48.44595,Ginasio Poliesportivo da UFPA,0.723357489,23,20,1027
+heatmark55,-1.47643,-48.44501,Grafica Universitaria,0.540271256,26,23,693
+heatmark56,-1.47640,-48.45539,Grupo de Estudos e Desenvolvimento de Alternativas Energeticas (GEDAE),0.082464887,15,17,859
+heatmark57,-1.47639,-48.44794,Hospital Universitatio Bettina Ferro de Souza,0.327302289,16,18,721
+heatmark58,-1.47616,-48.44794,Incubadoras de Empresas PCT Guama,0.768597095,21,23,989
+heatmark59,-1.47397,-48.45627,Instituto Amazonico de Agriculturas Familiares (INEAF),0.616016312,28,31,885
+heatmark60,-1.47120,-48.45620,Instituto de Ciencias Biologicas (ICB),0.339891234,16,38,901
+heatmark61, -1.47359,-48.45178,Instituto de Ciencias Exatas e Naturais (ICEN),0.462635563,29,26,580

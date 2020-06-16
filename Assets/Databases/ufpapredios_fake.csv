@@ -1,0 +1,99 @@
+﻿sigla,lat,long,nome,ano-fund,grupo,n-func,tag,ult-investimento,receita-ano
+ginas,-1.47324,-48.45556,Ginasio Poliesportivo da UFPA,2016,amarelo,20,aula,2016,78000
+ilc,-1.47302,-48.45681,Instituto de Letras e Comunicacao (ILC),1971,verde,10,predio_publico,2017,69000
+ceabio,-1.46627,-48.44501,Centro de Estudos Avancados da Biodiversidade (CEABIO),1958,vermelho,12,faculdade,2013,79000
+ifch,-1.47396,-48.45636,Instituto de Filosofia e Ciencias Humanas (IFCH),1973,verde,19,grupo_estudo,2011,35000
+basba,-1.47765,-48.45708,Bloco A - Setorial Basico,1972,verde,40,restaurante,2014,72000
+lco, -1.47549,-48.45822,Laboratorio de Catalise e Oleoquimica (LCO),2002,verde,15,faculdade,2010,37000
+lapac,-1.47526,-48.45823,Laboratorio de Pesquisa e Analise de Combustiveis (LAPAC),2019,verde,14,aula,2011,84000
+bnsba,-1.47588,-48.45729,Bloco N - Setorial Basico,1996,verde,29,aula,2018,83000
+fadesp, -1.47394,-48.45787,Fundacao de Amparo e Desenvolvimento da Pesquisa (FADESP),2016,verde,37,aula,2018,32000
+bibce,-1.47622,-48.45661,Biblioteca Central Prof. Dr. Clodoaldo Beckmann,1993,amarelo,38,grupo_estudo,2012,75000
+reito,-1.47583,-48.45519,Reitoria,1993,amarelo,19,restaurante,2010,56000
+audsb, -1.47359,-48.45691,Auditorio Setorial Basico,1957,verde,28,faculdade,2012,59000
+orto,-1.47175,-48.44669,Farma Orto,1952,roxo,19,faculdade,2015,68000
+clipsi,-1.47265,-48.45565,Clinica de Psicologia,2011,amarelo,12,restaurante,2019,25000
+bpsba,-1.47534,-48.45755,Bloco P - Setorial Basico,2011,verde,19,grupo_estudo,2015,45000
+inpe,-1.46116,-48.44170,Instituto Nacional de Pesquisas Espaciais (INPE),1965,vermelho,13,restaurante,2011,61000
+bbsba,-1.47737,-48.45713,Bloco B - Setorial Basico,1964,verde,19,faculdade,2017,51000
+ciac,-1.47551,-48.45627,Centro de Indicadores Academicos (CIAC),1995,verde,23,predio_publico,2019,99000
+naea,-1.47190,-48.44980,Núcleo de Altos Estudos Amazonicos (NAEA),2016,azul,19,predio_publico,2018,47000
+eduni,-1.47702,-48.45840,Editora Universitaria,1969,verde,10,grupo_estudo,2019,28000
+atart,-1.47397,-48.45385,Atelier de Artes,1976,verde,12,faculdade,2016,73000
+bisba,-1.47644,-48.45777,Bloco I - Setorial Basico,1973,verde,34,faculdade,2019,66000
+fageo,-1.47232,-48.45679,Faculdade de Geofisica,1980,amarelo,28,predio_publico,2010,90000
+faenf,-1.47121,-48.44667,Faculdade de Enfermagem,2002,roxo,19,restaurante,2015,94000
+prem,-1.47345,-48.45283,Predio de Engenharia Mecanica,1983,azul,18,restaurante,2017,46000
+vopba,-1.47573,-48.45673,Ver-o-pesinho Setor Basico,1983,amarelo,18,aula,2010,63000
+blsba,-1.47639,-48.45719,Bloco L - Setorial Basico,2015,verde,27,restaurante,2015,79000
+laequi,-1.47537,-48.45332,Laboratorio de Engenharia Quimica,1976,verde,21,faculdade,2019,55000
+bmsba,-1.47616,-48.45775,Bloco M - Setorial Basico,1983,verde,37,faculdade,2013,26000
+faau,-1.47542,-48.45283,Faculdade de Arquitetura e Urbanismo,2004,verde,25,faculdade,2019,62000
+mongv,-1.47658,-48.45539,Monumento Gaspar Viana,1960,amarelo,25,restaurante,2016,90000
+pgitec,-1.47462,-48.45384,Predio das Pos-Graduacoes do Instituto de Tecnologia (PGITEC),1967,verde,18,faculdade,2014,32000
+labac,-1.47197,-48.44785,Laboratorio de Analises Clinicas,2005,roxo,40,predio_publico,2015,56000
+rupro,-1.47351,-48.45075,Restaurante Universitario Setorial Profissional (RU),1997,azul,19,predio_publico,2012,87000
+laqle,-1.46673,-48.44621,Laboratorio de Qualidade do Leite,1951,vermelho,32,predio_publico,2010,74000
+bosba,-1.47565,-48.45732,Bloco O - Setorial Basico,1964,verde,13,aula,2017,41000
+labqui,-1.47537,-48.45796,Laboratorio de Quimica,1968,verde,34,grupo_estudo,2017,87000
+icsa,-1.47297,-48.44975,Instituto de Ciencias Sociais e Aplicadas (ICSA),2019,azul,10,grupo_estudo,2018,81000
+vadiao,-1.47676,-48.45450,Vadiao,1951,amarelo,25,aula,2017,73000
+esino,-1.46430,-48.44542,Espaco Inovacao,1995,vermelho,12,predio_publico,2018,42000
+mdorio,-1.47695,-48.45641,Mirante do Rio,1961,verde,24,restaurante,2019,33000
+iemci,-1.47521,-48.45922,Biblioteca do Instituto de Educacao Matematica e Cientifica (IEMCI),1979,verde,17,faculdade,2017,80000
+sepai,-1.47204,-48.45791,SEPAI,1975,amarelo,15,predio_publico,2011,57000
+fanut,-1.47095,-48.44615,Faculdade de Nutricao,1973,roxo,13,aula,2017,69000
+bfsba,-1.47680,-48.45716,Bloco F - Setorial Basico,1978,verde,32,faculdade,2011,86000
+cciufpa,-1.47512,-48.45903,Clube de Ciencias da UFPA (CCIUFPA),1989,verde,33,predio_publico,2011,26000
+labhis,-1.47384,-48.45705,Laboratorio de Historia,2018,verde,23,faculdade,2013,69000
+cebnu,-1.47511,-48.45539,Centro de Eventos Benedito Nunes (Hangarzinho),1977,amarelo,12,predio_publico,2011,47000
+bhsba,-1.47661,-48.45727,Bloco H - Setorial Basico,2006,verde,28,grupo_estudo,2018,55000
+chale,-1.47523,-48.45178,Chale de Ferro,1973,azul,33,grupo_estudo,2017,75000
+bettina,-1.46945,-48.44682,Hospital Universitatio Bettina Ferro de Souza,1982,roxo,18,ponte,2016,87000
+capun,-1.47723,-48.45548,Capela Universitaria,1951,amarelo,10,predio_publico,2015,44000
+baisp,-1.47411,-48.45106,Bloco de Aulas - Setorial Profissional,1972,azul,21,grupo_estudo,2013,65000
+laene,-1.47405,-48.45183,Laboratorio de Engenharia Eletrica,2016,azul,25,aula,2012,26000
+ceamazon,-1.46839,-48.44794,Centro de Excelencia em Eficiencia Energetica da Amazonia (CEAMAZON),2019,roxo,12,aula,2018,41000
+prefca,-1.47584,-48.45881,Prefeitura do Campus,1960,verde,35,restaurante,2018,62000
+bqsba,-1.47527,-48.45727,Bloco Q - Setorial Basico,1962,verde,26,predio_publico,2015,45000
+rubas,-1.47791,-48.45830,Restaurante Universitario Setorial Basico (RU),2005,verde,29,grupo_estudo,2011,27000
+casmuc,-1.46953,-48.44595,Centro de Atencao à Saúde da Mulher e da Crianca (CASMUC),1976,roxo,14,grupo_estudo,2011,30000
+laec,-1.47449,-48.45240,Laboratorio de Engenharia Civil,1967,verde,15,restaurante,2014,33000
+voppr,-1.47389,-48.45055,Ver-o-pesinho Setorial Profissional,2010,azul,40,restaurante,2010,62000
+universitec,-1.47501,-48.45369,Universitec,2013,verde,14,aula,2019,99000
+cgbs,-1.46839,-48.44794,Centro de Genomica e Biologia de Sistemas,1986,roxo,25,ponte,2015,27000
+audsp,-1.47444,-48.45194,Auditorio Setorial Profissional,1991,azul,10,restaurante,2010,91000
+graun,-1.47215,-48.45751,Grafica Universitaria,2011,amarelo,23,predio_publico,2010,50000
+bdsba,-1.47711,-48.45715,Bloco D - Setorial Basico,1969,verde,13,predio_publico,2017,97000
+faesa,-1.47361,-48.45396,Faculdade de Engenharia Sanitaria e Ambiental,1975,verde,40,predio_publico,2015,63000
+fafarm,-1.47189,-48.44740,Faculdade de Farmacia,1973,roxo,26,restaurante,2013,63000
+icen,-1.47459,-48.45632,Instituto de Ciencias Exatas e Naturais (ICEN),1987,verde,26,aula,2014,41000
+bpspa,-1.47285,-48.45531,Base da Prestadora de Servicos Paraiso,2020,amarelo,16,aula,2015,81000
+labat,-1.46048,-48.44222,Laboratorio de Alta Tensao,2013,vermelho,28,faculdade,2017,96000
+baiisp,-1.47389,-48.44997,Bloco de Aulas II - Setorial Profissional,1959,azul,17,predio_publico,2011,50000
+icj,-1.47127,-48.44974,Instituto de Ciencias Juridicas (ICJ),1993,azul,38,ponte,2013,56000
+bksba,-1.47640,-48.45736,Bloco K - Setorial Basico,1970,verde,10,restaurante,2019,76000
+icb,-1.47348,-48.45763,Instituto de Ciencias Biologicas (ICB),2020,verde,38,predio_publico,2016,25000
+labant,-1.47388,-48.45679,Laboratorio de Antropologia,2017,verde,15,restaurante,2011,41000
+poema,-1.47283,-48.44738,POEMA,1972,azul,17,restaurante,2019,39000
+biot,-1.47266,-48.45764,Bioterio,2013,verde,39,faculdade,2018,96000
+ineaf,-1.47234,-48.45675,Instituto Amazonico de Agriculturas Familiares (INEAF),1966,vermelho,31,predio_publico,2010,37000
+neb,-1.47209,-48.44922,Núcleo de Educacao Basica (NEB),2020,azul,13,predio_publico,2012,54000
+itec,-1.47306,-48.45072,Instituto de Tecnologia (ITEC),1984,azul,27,restaurante,2016,51000
+gedae,-1.47049,-48.44592,Grupo de Estudos e Desenvolvimento de Alternativas Energeticas (GEDAE),1972,roxo,17,predio_publico,2018,69000
+ntpc,-1.47247,-48.45636,Núcelo de Teoria e Pesquisa de Comportamento (NTPC),1995,amarelo,31,restaurante,2010,35000
+faem,-1.47395,-48.45286,Faculdade de Engenharia Mecanica,1951,verde,29,faculdade,2010,68000
+ig,-1.47494,-48.45755,Instituto de Geociencias (IG),1954,verde,23,aula,2012,38000
+faodo,-1.47099,-48.44737,Faculdade de Odontologia,1987,roxo,39,faculdade,2019,92000
+fafito,-1.47121,-48.44617,Faculdade de Fisioterapia e Terapia Ocupacional,1963,roxo,16,aula,2016,26000
+labtic,-1.47396,-48.45438,Labtic,1974,verde,13,aula,2012,56000
+besba,-1.47689,-48.45765,Bloco E - Setorial Basico,1992,verde,10,predio_publico,2015,41000
+bcsba,-1.47711,-48.45766,Bloco C - Setorial Basico,1980,verde,20,grupo_estudo,2012,48000
+capacit,-1.47223,-48.45720,Coordenadoria de Capacitacao e Desenvolvimento (CAPACIT),1958,amarelo,10,grupo_estudo,2017,64000
+numa,-1.47511,-48.45146,Núcleo de Meio Ambiente (NUMA),1991,azul,34,aula,2011,69000
+audicj,-1.47120,-48.44983,Auditorio Jose Vicente Miranda Filho (Auditorio ICJ),1954,azul,16,predio_publico,2016,35000
+bibig,-1.47504,-48.45808,Biblioteca do Instituto de Geociencias,1983,verde,11,ponte,2017,66000
+bjsba,-1.47643,-48.45762,Bloco J - Setorial Basico,2004,verde,11,faculdade,2013,95000
+ctic,-1.47505,-48.45620,Centro de Tecnologia da Informacao e Comunicacao (CTIC),2010,verde,30,grupo_estudo,2013,46000
+bgsba,-1.47665,-48.45765,Bloco G - Setorial Basico,1991,verde,26,aula,2011,75000
+pctg,-1.46372,-48.44536,Incubadoras de Empresas PCT Guama,1997,vermelho,23,grupo_estudo,2018,55000
