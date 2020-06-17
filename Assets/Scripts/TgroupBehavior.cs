@@ -41,8 +41,8 @@ public class TgroupBehavior : MonoBehaviour
             //se toggle desativado = adiciona a lista de parametros para deixarem de ser exibido
             if (isOff){ _parameters.Add(toggle.GetComponentInChildren<Text>().text); } 
         }
-        GameObject canvas = GameObject.Find("Canvas");
-        canvas.GetComponent<FilterBehavior>().UpdateFilterListByIndex(_id, _parameters);
+        GameObject manager = GameObject.Find("Manager");
+        manager.GetComponent<FilterBehavior>().UpdateFilterListByIndex(_id, _parameters);
     }
 
     public List<string> GetParameters()

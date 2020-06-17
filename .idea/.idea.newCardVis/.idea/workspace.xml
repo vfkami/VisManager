@@ -7,15 +7,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MinMaxSliderBehavior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/ChartGeneratorEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DatasetReader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TgroupBehavior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/VisualizationManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/src/ChartGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ProjectUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PoiManagerBehavior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FilterBehavior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Min Max Slider/MinMaxSlider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIButtonBehavior.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -28,17 +34,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TgoupBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/Prefabs/Min Max Slider/MinMaxSlider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DatasetReader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ProjectUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/MinMaxSliderBehavior.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TgroupBehavior.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MinMaxSliderBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FilterBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/SimpleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIButtonBehavior.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ProjectUtils.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/VisualizationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MinMaxSliderBehavior.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TgroupBehavior.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1dMHQXXJevAKJuU8aJgjSJuASJI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -48,6 +57,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="RainbowCSV.Settings" />
   </component>
@@ -80,6 +90,9 @@
       <workItem from="1592228458060" duration="11642000" />
       <workItem from="1592325894988" duration="4415000" />
       <workItem from="1592330359031" duration="12689000" />
+      <workItem from="1592398449020" duration="3267000" />
+      <workItem from="1592403535214" duration="2751000" />
+      <workItem from="1592413832043" duration="10047000" />
     </task>
     <servers />
   </component>

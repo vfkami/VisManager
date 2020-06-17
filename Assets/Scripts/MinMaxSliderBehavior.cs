@@ -26,8 +26,8 @@ public class MinMaxSliderBehavior : MonoBehaviour
             GetComponentInChildren<MinMaxSlider>().Values.maxValue.ToString("0.000", CultureInfo.InvariantCulture),
             GetComponentInChildren<Toggle>().isOn.ToString()
         };
-        GameObject canvas = GameObject.Find("Canvas");
-        canvas.GetComponent<FilterBehavior>().UpdateFilterListByIndex(_id, _parameters);
+        GameObject manager = GameObject.Find("Manager");
+        manager.GetComponent<FilterBehavior>().UpdateFilterListByIndex(_id, _parameters);
     }
     
 
