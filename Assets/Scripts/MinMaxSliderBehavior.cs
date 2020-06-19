@@ -27,7 +27,7 @@ public class MinMaxSliderBehavior : MonoBehaviour
             GetComponentInChildren<Toggle>().isOn.ToString()
         };
         GameObject manager = GameObject.Find("Manager");
-        manager.GetComponent<FilterBehavior>().UpdateFilterListByIndex(_id, _parameters);
+        manager.GetComponent<FilterManager>().UpdateFilterListByIndex(_id, _parameters);
     }
     
 

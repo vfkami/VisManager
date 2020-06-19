@@ -12,19 +12,17 @@ public class VisualizationManager : MonoBehaviour
     private List<string[]> _dataset;
     private List<string> _datasetLabel = new List<string>();
     private List<Type> _labelTypes = new List<Type>();
-
-    public void SetDatabase(List<string[]> originalDatabase, List<string> labels, List<Type> types)
+    
+    public void GenerateVisualization(string visType, bool isFiltredVisualization)
     {
-        _dataset = new List<string[]>(originalDatabase);
-        _datasetLabel = new List<string>(labels);
-        _labelTypes = new List<Type>(types);
-    }
-
-    public void GenerateVisualization()
-    {
-        GameObject dpdVizTypes = GameObject.Find("DPD_VizTypes"); //use for differentiate charts
-        
         List<int> indexOfSelectedAttributes = new List<int>();
+
+        _dataset = isFiltredVisualization ? 
+            GetComponent<FilterManager>().GetFilteredDatabase() : GetComponent<DatasetReader>().GetDataset();
+
+        _datasetLabel = new List<string>(GetComponent<DatasetReader>().GetLabels());
+        _labelTypes = new List<Type>(GetComponent<DatasetReader>().GetTypes());
+        
         
         foreach (var dropdown in attDropdowns)
         {

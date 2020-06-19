@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
-public class FilterBehavior : MonoBehaviour
+public class FilterManager : MonoBehaviour
 {
     private Dictionary<int, List<string>> _filterValues = new Dictionary<int, List<string>>();
     private List<string[]> _database;
@@ -33,9 +33,11 @@ public class FilterBehavior : MonoBehaviour
         _filterValues = new Dictionary<int, List<string>>();
     }
 
-    public List<string[]> GenerateFilteredDatabase()
+    public List<string[]> GetFilteredDatabase()
     {
         List<string[]> _filteredDatabase = new List<string[]>();
+
+        if (_filterValues.Count == 0) return null;
 
         //para cada linha na base de dados original
         foreach (string[] line in _database)

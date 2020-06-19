@@ -41,8 +41,8 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        _datasetLabel = manager.GetComponent<DatasetReader>().GetDatabaseLabel();
-        _labelTypes = manager.GetComponent<DatasetReader>().GetLabelTypes();
+        _datasetLabel = manager.GetComponent<DatasetReader>().GetLabels();
+        _labelTypes = manager.GetComponent<DatasetReader>().GetTypes();
         _dataset = manager.GetComponent<DatasetReader>().GetDataset();
         _path = manager.GetComponent<DatasetReader>().GetDatabasePath();
 
@@ -76,8 +76,7 @@ public class UIManager : MonoBehaviour
 
     private void CallEssentialFunctions()
     {
-        manager.GetComponent<FilterBehavior>().SetDatabase(_dataset, _labelTypes);
-        visManager.GetComponent<VisualizationManager>().SetDatabase(_dataset, _datasetLabel, _labelTypes);
+        manager.GetComponent<FilterManager>().SetDatabase(_dataset, _labelTypes);
         DestroyAllFilters();
         PopulateVizDropdown();
         UpdateDropdownOptions();
@@ -85,27 +84,27 @@ public class UIManager : MonoBehaviour
     
     public void CallByButton1()
     {
-        manager.GetComponent<DatasetReader>().ReadTextFile("Assets/Databases/carros_teste3.csv");
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/carros_teste3.csv");
         UpdateUI();
     }
     public void CallByButton2()
     {
-        manager.GetComponent<DatasetReader>().ReadTextFile("Assets/Databases/iris.csv");
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/iris.csv");
         UpdateUI();
     }
     public void CallByButton3()
     {
-        manager.GetComponent<DatasetReader>().ReadTextFile("Assets/Databases/pokemon.csv");
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/pokemon.csv");
         UpdateUI();
     }
     public void CallByButton4()
     {
-        manager.GetComponent<DatasetReader>().ReadTextFile("Assets/Databases/matrix_scatterplot.csv");
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/matrix_scatterplot.csv");
         UpdateUI();
     }
     public void CallByButton5()
     {
-        manager.GetComponent<DatasetReader>().ReadTextFile("Assets/Databases/ufpapredios_fake.csv");
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/ufpapredios_fake.csv");
         UpdateUI();
     }
 
@@ -173,7 +172,7 @@ public class UIManager : MonoBehaviour
             Destroy(filter);
         }
         _filters = new List<GameObject>();
-        manager.GetComponent<FilterBehavior>().DestroyFilterList();
+        manager.GetComponent<FilterManager>().DestroyFilterList();
     }
 
     public void OnVizDropdownValueChanged()
@@ -251,7 +250,7 @@ public class UIManager : MonoBehaviour
     
     public void UpdateFilteredDatabaseDiv()
     {
-        List<string[]> filteredDatabase = manager.GetComponent<FilterBehavior>().GenerateFilteredDatabase();
+        List<string[]> filteredDatabase = manager.GetComponent<FilterManager>().GetFilteredDatabase();
         
         divFilteredContent.GetComponentInChildren<Text>().text = "Filtered Content: \n";
         for(int i = 0; i < filteredDatabase.Count; i++)

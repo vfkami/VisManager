@@ -42,7 +42,7 @@ public class TgroupBehavior : MonoBehaviour
             if (isOff){ _parameters.Add(toggle.GetComponentInChildren<Text>().text); } 
         }
         GameObject manager = GameObject.Find("Manager");
-        manager.GetComponent<FilterBehavior>().UpdateFilterListByIndex(_id, _parameters);
+        manager.GetComponent<FilterManager>().UpdateFilterListByIndex(_id, _parameters);
     }
 
     public List<string> GetParameters()

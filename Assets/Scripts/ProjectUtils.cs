@@ -91,20 +91,4 @@ public class ProjectUtils : MonoBehaviour
 
         return phrase;
     }
-    
-    public string ConvertToSingleString(List<float> line)
-    {
-        string phrase = "";
-
-        for (int i = 0; i < line.Count; i++)
-        {
-            phrase += line[i].ToString(CultureInfo.InvariantCulture);
-            if (i + 1 < line.Count)
-                phrase += ",";
-            else
-                return phrase;
-        }
-
-        return phrase;
-    }
 }

@@ -13,7 +13,7 @@ public class DatasetReader : MonoBehaviour
     private List<Type> _labelTypes;
     private List<string> _tempLine;
     
-    public void ReadTextFile(string path) // atributos separados por ','
+    public void ReadFile(string path) // atributos separados por ','
     {
         _dataset = new List<string[]>();
         _datasetLabel = new List<string>();
@@ -45,7 +45,6 @@ public class DatasetReader : MonoBehaviour
         file.Close();
         ParseList();
     }
-
     private void ParseList()
     {
         foreach (var line in _tempLine) 
@@ -60,7 +59,6 @@ public class DatasetReader : MonoBehaviour
             _dataset.Add(lineSplited); 
         }
     }
-
     private void DefineLabelTypes(string[] dataExample) // cria uma lista de tipos para cada atributo da database
     {
         foreach (string data in dataExample)
@@ -69,7 +67,6 @@ public class DatasetReader : MonoBehaviour
             else if (double.TryParse(data, NumberStyles.Number,CultureInfo.InvariantCulture, out _)) 
             { _labelTypes.Add(typeof(double)); }
             else if (float.TryParse(data, out _)){ _labelTypes.Add(typeof(float)); }
-            else if (bool.TryParse(data, out _)) { _labelTypes.Add(typeof(bool)); }
             else { _labelTypes.Add(typeof(string)); }
         }
     }
@@ -79,32 +76,26 @@ public class DatasetReader : MonoBehaviour
         return _dataset;
     }
 
-    public List<string> GetDatabaseLabel()
+    public List<string> GetLabels()
     {
         return _datasetLabel;
     }
 
-    public List<Type> GetLabelTypes()
+    public List<Type> GetTypes()
     {
         return _labelTypes;
     }
 
-
-    public string[] GetPoiInformation(string poiName)
+    public string[] GetAllElementInformation(string element, int index)
     {
         foreach (string[] line in _dataset)
         {
-            if (line[0] == poiName)
+            if (line[index] == element)
                 return line;
         }
         return new string[] {};
     }
 
-    public void SetDatabasePath(string path)
-    {
-        _datasetPath = path;
-    }
-    
     public string GetDatabasePath()
     {
         return _datasetPath;
