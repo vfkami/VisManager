@@ -11,7 +11,7 @@ public class ChartGeneratorEditor : Editor
     [SerializeField]
     ChartGenerator script;
 
-    ReadDatabase datasetbuffer = new ReadDatabase(); // TODO: buffer every dataset on a object (big think: is it possible to save on disk pkl like?)
+    ReadDatabaseGenVis datasetbuffer = new ReadDatabaseGenVis(); // TODO: buffer every dataset on a object (big think: is it possible to save on disk pkl like?)
 
     void OnEnable()
     {
@@ -68,7 +68,7 @@ public class ChartGeneratorEditor : Editor
             }
             case ChartGenerator.DataType.Dataset:
             {
-                    string[] datasetpaths = { "outro", ReadDatabase.file1, ReadDatabase.file3};
+                    string[] datasetpaths = { "outro", ReadDatabaseGenVis.file1, ReadDatabaseGenVis.file3};
                     string[] datasetnames = { "outro", "iris", "carros"};
                     script.indexdataset = EditorGUILayout.Popup("Select dataset", script.indexdataset, datasetnames);
                     if (script.indexdataset == 0)
@@ -76,13 +76,13 @@ public class ChartGeneratorEditor : Editor
                         string temppath = EditorGUILayout.TextField("dataset name:", datasetbuffer.path);
                         if (temppath != datasetbuffer.path)
                         {
-                            datasetbuffer = new ReadDatabase(temppath);
+                            datasetbuffer = new ReadDatabaseGenVis(temppath);
                             datasetbuffer.loadfile();
                         }
                     } else { 
                         if (!datasetpaths[script.indexdataset].Equals(datasetbuffer.path))
                         {
-                            datasetbuffer = new ReadDatabase(datasetpaths[script.indexdataset]);
+                            datasetbuffer = new ReadDatabaseGenVis(datasetpaths[script.indexdataset]);
                             datasetbuffer.loadfile();
                         }
                     }
@@ -134,14 +134,15 @@ public class ChartGeneratorEditor : Editor
         switch (script.charttype)
         {
             case ChartGenerator.ChartType.BarChartVertical:
-                script.colors[0] = EditorGUILayout.ColorField("Bars color", script.colors[0]);
-                break;
+                // script.colors[0] = EditorGUILayout.ColorField("Bars color", script.colors[0]);
+                // break;
             case ChartGenerator.ChartType.LineChart:
             case ChartGenerator.ChartType.PieChart:
             case ChartGenerator.ChartType.AreaChart:
             case ChartGenerator.ChartType.Scatterplot:
-                for (int i = 0; i < newc; i++)
-                    script.colors[i] = EditorGUILayout.ColorField("Color " + i, script.colors[i]);
+                // for (int i = 0; i < newc; i++)
+                //     script.colors[i] = EditorGUILayout.ColorField("Color " + i, script.colors[i]);
+                // break;
                 break;
         }
     }

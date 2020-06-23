@@ -8,16 +8,16 @@ public class UIButtonBehavior : MonoBehaviour
     public GameObject Aba1;
     public GameObject Aba2;
     public GameObject Aba3;
-
-    public GameObject Chart;
+    public GameObject DefaultChart;
+    public GameObject FiltredChart;
     
     public void ShowAba1()
     {
         Aba1.gameObject.SetActive(true);
         Aba2.gameObject.SetActive(false);  
         Aba3.gameObject.SetActive(false);
-        Chart.gameObject.SetActive(false);
-
+        DefaultChart.gameObject.SetActive(false);
+        FiltredChart.gameObject.SetActive(false);
     }
     
     public void ShowAba2()
@@ -25,7 +25,8 @@ public class UIButtonBehavior : MonoBehaviour
         Aba1.gameObject.SetActive(false);
         Aba2.gameObject.SetActive(true);
         Aba3.gameObject.SetActive(false);
-        Chart.gameObject.SetActive(false);
+        DefaultChart.gameObject.SetActive(false);
+        FiltredChart.gameObject.SetActive(false);
 
     }
 
@@ -34,6 +35,7 @@ public class UIButtonBehavior : MonoBehaviour
         Aba1.gameObject.SetActive(false);
         Aba2.gameObject.SetActive(false); 
         Aba3.gameObject.SetActive(true);
-        Chart.gameObject.SetActive(true);
+        DefaultChart.gameObject.SetActive(true);
+        FiltredChart.gameObject.SetActive(true);
     }
 }

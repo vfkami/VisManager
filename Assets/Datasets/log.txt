@@ -1,0 +1,14 @@
+MARCA, true
+COMBUSTIVEL, true
+TURBO, true
+NRPORTAS, true
+TIPO, true
+TRACAO, true
+POSMOTOR, true
+PESO, true
+NRCILINDROS, true
+POTENCIA, true
+RPM, true
+VALOR, true
+ANO, true
+ORIGEM, true

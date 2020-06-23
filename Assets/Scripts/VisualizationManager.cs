@@ -1,42 +1,30 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VisualizationManager : MonoBehaviour
 {
-    public GameObject genViz;
-    public GameObject[] attDropdowns;
+    public GameObject manager;
     
     private List<string[]> _dataset;
     private List<string> _datasetLabel = new List<string>();
     private List<Type> _labelTypes = new List<Type>();
     
-    public void GenerateVisualization(string visType, bool isFiltredVisualization)
+    public void GenerateVisualization(ChartGenerator.ChartType visType, bool isFiltredVisualization, string visName)
     {
-        List<int> indexOfSelectedAttributes = new List<int>();
+        print(visName);
+        GameObject canvas = GameObject.Find("Canvas");
+        List<int> indexOfSelectedAttributes = canvas.GetComponent<UIManager>().GetIndexOfSelectedAttributes();
 
         _dataset = isFiltredVisualization ? 
-            GetComponent<FilterManager>().GetFilteredDatabase() : GetComponent<DatasetReader>().GetDataset();
-
-        _datasetLabel = new List<string>(GetComponent<DatasetReader>().GetLabels());
-        _labelTypes = new List<Type>(GetComponent<DatasetReader>().GetTypes());
+            manager.GetComponent<FilterManager>().GetFilteredDatabase() : manager.GetComponent<DatasetReader>().GetDataset();
         
+        _datasetLabel = new List<string>(manager.GetComponent<DatasetReader>().GetLabels());
+        _labelTypes = new List<Type>(manager.GetComponent<DatasetReader>().GetTypes());
         
-        foreach (var dropdown in attDropdowns)
-        {
-            if (!dropdown.gameObject.activeSelf) continue;
-
-            int index = dropdown.GetComponent<Dropdown>().value; // cause 0 is always default
-
-            if (index == 0) continue;
-
-            string label = dropdown.GetComponent<Dropdown>().options[index].text;
-            int trueIndex = GetComponent<ProjectUtils>().GetIndexOfDropdownOption(label, _datasetLabel);
-            indexOfSelectedAttributes.Add(trueIndex);
-        }
-
         List<string> chartAttributes = new List<string>();
 
         foreach (int index in indexOfSelectedAttributes)
@@ -51,25 +39,29 @@ public class VisualizationManager : MonoBehaviour
                     temp += ",";
             }
         }
+
+        GetComponent<ChartGenerator>().title = visName;
+        GetComponent<ChartGenerator>().charttype = visType;
+
+        GetComponent<ChartGenerator>().x = chartAttributes[0];
+        GetComponent<ChartGenerator>().xlabel = _datasetLabel[indexOfSelectedAttributes[0]];
+
+        GetComponent<ChartGenerator>().y = chartAttributes[1];
+        GetComponent<ChartGenerator>().ylabel = _datasetLabel[indexOfSelectedAttributes[1]];
+
+        GetComponent<ChartGenerator>().getchart();
+
+        if (indexOfSelectedAttributes.Count < 3) return;
+        if (chartAttributes.Count < 3) return;
         
-        genViz.GetComponent<ChartGenerator>().x = chartAttributes[0];
-        genViz.GetComponent<ChartGenerator>().xlabel = _datasetLabel[indexOfSelectedAttributes[0]];
+        GetComponent<ChartGenerator>().z = chartAttributes[2];
+        GetComponent<ChartGenerator>().zlabel = _datasetLabel[indexOfSelectedAttributes[2]];
+        GetComponent<ChartGenerator>().getchart();
 
-        genViz.GetComponent<ChartGenerator>().y = chartAttributes[1];
-        genViz.GetComponent<ChartGenerator>().ylabel = _datasetLabel[indexOfSelectedAttributes[1]];
-
-        genViz.GetComponent<ChartGenerator>().getchart();
-
-        if (indexOfSelectedAttributes.Count <= 2) return;
-
-        genViz.GetComponent<ChartGenerator>().z = chartAttributes[2];
-        genViz.GetComponent<ChartGenerator>().zlabel = _datasetLabel[indexOfSelectedAttributes[3]];
-        genViz.GetComponent<ChartGenerator>().getchart();
-
-        if (indexOfSelectedAttributes.Count != 4) return;
+        if (chartAttributes.Count != 4) return;
         
-        genViz.GetComponent<ChartGenerator>().w = chartAttributes[3];
-        genViz.GetComponent<ChartGenerator>().wlabel = _datasetLabel[indexOfSelectedAttributes[3]];
-        genViz.GetComponent<ChartGenerator>().getchart();
+        GetComponent<ChartGenerator>().w = chartAttributes[3];
+        GetComponent<ChartGenerator>().wlabel = _datasetLabel[indexOfSelectedAttributes[3]];
+        GetComponent<ChartGenerator>().getchart();
     }
 }

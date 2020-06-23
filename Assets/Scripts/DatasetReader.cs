@@ -12,7 +12,7 @@ public class DatasetReader : MonoBehaviour
     private List<string> _datasetLabel;
     private List<Type> _labelTypes;
     private List<string> _tempLine;
-    
+
     public void ReadFile(string path) // atributos separados por ','
     {
         _dataset = new List<string[]>();

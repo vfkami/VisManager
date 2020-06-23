@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEditor;
 
-public class ReadDatabase
+public class ReadDatabaseGenVis
 {
     public static string
         file1 = "Assets/Datasets/iris.csv",
@@ -17,16 +17,16 @@ public class ReadDatabase
         get { return pathFile; } set { pathFile = value; }
     }
     List<String[]> Attributes = new List<string[]>();
-    public string[] columnnames {
-        get { return Attributes[0]; } set { }
-    }
+    public string[] columnnames { get { return Attributes[0]; } set { } }
+
     List<String> TypesOfAttributes = new List<string>();
+    public string[] types { get { return TypesOfAttributes.ToArray(); } set { } }
 
     bool autostart = false;
 
-    public ReadDatabase() { pathFile = ""; }
+    public ReadDatabaseGenVis() { pathFile = ""; }
 
-    public ReadDatabase(string filepath) { pathFile = filepath; }
+    public ReadDatabaseGenVis(string filepath) { pathFile = filepath; }
 
     public void loadfile()
     {
@@ -77,6 +77,7 @@ public class ReadDatabase
         {
             Line.Add(x);
         }
+        
         return (Line);
     }
     

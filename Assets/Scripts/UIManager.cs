@@ -27,10 +27,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Viz Gen")] 
     public GameObject visManager;
-    public GameObject genViz;
     public GameObject dpdVizTypes;
     public GameObject[] attDropdowns;
-
+    public GameObject ifChartName;
 
     private List<string[]> _dataset = new List<string[]>();
     private List<string> _datasetLabel = new List<string>();
@@ -78,7 +77,7 @@ public class UIManager : MonoBehaviour
     {
         manager.GetComponent<FilterManager>().SetDatabase(_dataset, _labelTypes);
         DestroyAllFilters();
-        PopulateVizDropdown();
+        PopulateVizDropdown(false);
         UpdateDropdownOptions();
     }
     
@@ -167,6 +166,7 @@ public class UIManager : MonoBehaviour
 
     public void DestroyAllFilters()
     {
+        divFilteredContent.GetComponentInChildren<Text>().text = "Filtered Database: ";  
         foreach (var filter in _filters)
         {
             Destroy(filter);
@@ -183,6 +183,7 @@ public class UIManager : MonoBehaviour
         switch (index)
         {
             case 1:
+                PopulateVizDropdown(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = false;
@@ -190,6 +191,7 @@ public class UIManager : MonoBehaviour
                 break;
             
             case 2:
+                PopulateVizDropdown(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = false;
@@ -197,52 +199,79 @@ public class UIManager : MonoBehaviour
                 break;
             
             case 3:
+                PopulateVizDropdown(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
-                attDropdowns[2].GetComponent<Dropdown>().interactable = false;
+                attDropdowns[2].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[3].GetComponent<Dropdown>().interactable = false;
                 break;
             
             case 4:
+                PopulateVizDropdown(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
-                attDropdowns[2].GetComponent<Dropdown>().interactable = false;
+                attDropdowns[2].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[3].GetComponent<Dropdown>().interactable = false;
                 break;
             
             case 5:
+                PopulateVizDropdown(true);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
-                attDropdowns[2].GetComponent<Dropdown>().interactable = false;
+                attDropdowns[2].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[3].GetComponent<Dropdown>().interactable = true;
                 break;
         }
     }
 
-    private void PopulateVizDropdown()
+    private void PopulateVizDropdown(bool isScatterplot)
     {
-        List<string> tempListOfAttributes = new List<string>();
+        List<string> listOfOptions;
+        Dropdown.OptionData tempData;
 
         foreach (GameObject dpd in attDropdowns)
             dpd.GetComponent<Dropdown>().options = new List<Dropdown.OptionData>();
         
+        if (isScatterplot)
+        { 
+            listOfOptions = new List<string>
+                (manager.GetComponent<ProjectUtils>().GetContinuumAtributes(_labelTypes, _datasetLabel));
+            
+            foreach (GameObject dpd in attDropdowns)
+            {
+                tempData = new Dropdown.OptionData("- contínuo -");
+                dpd.GetComponent<Dropdown>().options = new List<Dropdown.OptionData> {tempData};
+
+                foreach (string option in listOfOptions)
+                {
+                    tempData = new Dropdown.OptionData(option);
+                    dpd.GetComponent<Dropdown>().options.Add(tempData);
+                }
+            }
+            
+            return;
+        }
+        
         for (int i = 0; i < attDropdowns.Length; i++)
         {
             if (i == 0 || i == 2)
-                tempListOfAttributes = new List<string>
-                    (manager.GetComponent<ProjectUtils>().GetCategoricAttributes(_labelTypes, _datasetLabel));
-
-            else
-                tempListOfAttributes = new List<string>
-                    (manager.GetComponent<ProjectUtils>().GetContinuumAtributes(_labelTypes, _datasetLabel));
-
-            
-            Dropdown.OptionData tempData = new Dropdown.OptionData("- selecione -");
-            attDropdowns[i].GetComponent<Dropdown>().options.Add(tempData);
-
-            foreach (string label in tempListOfAttributes)
             {
-                tempData = new Dropdown.OptionData(label);
+                tempData = new Dropdown.OptionData("- categorico -");
+                listOfOptions = new List<string>
+                    (manager.GetComponent<ProjectUtils>().GetCategoricAttributes(_labelTypes, _datasetLabel));
+            }
+            else
+            {
+                tempData = new Dropdown.OptionData("- contínuo -");
+                listOfOptions = new List<string>
+                    (manager.GetComponent<ProjectUtils>().GetContinuumAtributes(_labelTypes, _datasetLabel));
+            }
+
+            attDropdowns[i].GetComponent<Dropdown>().options = new List<Dropdown.OptionData> {tempData};
+
+            foreach (string option in listOfOptions)
+            {
+                tempData = new Dropdown.OptionData(option);
                 attDropdowns[i].GetComponent<Dropdown>().options.Add(tempData);
             }
         }
@@ -262,5 +291,68 @@ public class UIManager : MonoBehaviour
             }
             divFilteredContent.GetComponentInChildren<Text>().text += "\n";
         }
+    }
+
+    public void ButtonOfVisualizationCall(bool isFiltred)
+    {
+        int index = dpdVizTypes.GetComponent<Dropdown>().value;
+        List<int> indexOfSelectedAttributes = new List<int>();
+
+        string nameLabel = ifChartName.GetComponent<InputField>().text;
+
+        if (nameLabel == "")
+        {
+            nameLabel = "new chart";
+        }
+
+        GameObject visObject = isFiltred ? GameObject.Find("GenVizF") : GameObject.Find("GenVizD");
+        
+        switch (index)
+        {
+            case 1:
+                visObject.GetComponent<VisualizationManager>().
+                    GenerateVisualization(ChartGenerator.ChartType.BarChartVertical, isFiltred, nameLabel);
+                break;
+            
+            case 2:
+                visObject.GetComponent<VisualizationManager>().
+                    GenerateVisualization(ChartGenerator.ChartType.PieChart, isFiltred, nameLabel);
+                break;
+            
+            case 3:
+                visObject.GetComponent<VisualizationManager>().
+                    GenerateVisualization(ChartGenerator.ChartType.LineChart, isFiltred, nameLabel);
+                break;
+            case 4:
+                visObject.GetComponent<VisualizationManager>().
+                    GenerateVisualization(ChartGenerator.ChartType.AreaChart, isFiltred, nameLabel);
+                break;
+            
+            case 5:
+                visObject.GetComponent<VisualizationManager>().
+                    GenerateVisualization(ChartGenerator.ChartType.Scatterplot, isFiltred, nameLabel);
+                break;
+        }
+        
+    }
+
+    public List<int> GetIndexOfSelectedAttributes()
+    {
+        List<int> list = new List<int>();
+        
+        foreach (var dropdown in attDropdowns)
+        {
+            if (!dropdown.gameObject.activeSelf) continue;
+
+            int index = dropdown.GetComponent<Dropdown>().value; // cause 0 is always default
+
+            if (index == 0) continue;
+
+            string label = dropdown.GetComponent<Dropdown>().options[index].text;
+            int trueIndex = manager.GetComponent<ProjectUtils>().GetIndexOfDropdownOption(label, _datasetLabel);
+            list.Add(trueIndex);
+        }
+        
+        return list;
     }
 }
