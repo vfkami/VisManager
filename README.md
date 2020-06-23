@@ -8,14 +8,14 @@ TODO: Write the Usage section
 
 # API Reference
 
-The API contains fundamental functions for creating a visualization, including reading the database, selecting, filtering, and mapping the attributes and rendering the visualization. Initially, the API reads files in `.csv` separated by `, ` only.
+The API contains fundamental functions for creating a visualization, including reading the database, selecting, filtering, and mapping the attributes and rendering the visualization. Initially, the API reads files in `.csv` separated by `,` only.
 
 ## DatasetReader.cs
 
 Add in one GameObject to read a database and store the data.
 
 **ReadFile(`string` path)** <br>
-Call this function with a string parameter containing the path of the database preferably in `.csv` and separated by `, `.
+Call this function with a string parameter containing the path of the database preferably in `.csv` and separated by `,`.
 
 **GetDataset()** <br> 
 This function returns all the attributes present in the database. Each `string []` literally represents a row in the database.
@@ -55,11 +55,10 @@ Contains a list of useful functions for the operation of the project
 
 ## Another Scripts in This Project
 These are scripts created to manage the elements of `UIScene.unity` elements. Use your own scripts for managing 3D Objects, 2D and UI elements. Are they:
-- *TgroupBehavior.cs;*
-- *MinMaxSliderBehavior.cs;*
 - *UIManager.cs;*
 - *UIButtonBehavior.cs*
-
+- *TgroupBehavior.cs;*
+- *MinMaxSliderBehavior.cs;*
 
 ## Generating the Visualizations
 For visualizations, we use an external component called [VizGen](https://github.com/tiagodavi70/VizGen) a web service in node.js that receives requests through the parameters sent by Unity and returns an image containing the visualization referring to the parameters sent.
