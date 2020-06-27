@@ -7,9 +7,12 @@ using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.UI;
 
-
 public class UIManager : MonoBehaviour
 {
+    // esse script gerencia a cena UIScene todos os gameobjects são publicos pois
+    // são instanciados no editor. Esse script liga os objetos do canvas aos 
+    // scripts que gerenciam a base de dados;
+    
     public GameObject manager;
     
     [Header("Leitura da Base")]
@@ -30,7 +33,9 @@ public class UIManager : MonoBehaviour
     public GameObject dpdVizTypes;
     public GameObject[] attDropdowns;
     public GameObject ifChartName;
-
+    public GameObject genVizD;
+    public GameObject genVizF;
+    
     private List<string[]> _dataset = new List<string[]>();
     private List<string> _datasetLabel = new List<string>();
     private List<Type> _labelTypes = new List<Type>();
@@ -38,13 +43,28 @@ public class UIManager : MonoBehaviour
 
     private List<GameObject> _filters = new List<GameObject>();
 
-    private void UpdateUI()
+
+    private void SetNewDatabase()
     {
         _datasetLabel = manager.GetComponent<DatasetReader>().GetLabels();
         _labelTypes = manager.GetComponent<DatasetReader>().GetTypes();
         _dataset = manager.GetComponent<DatasetReader>().GetDataset();
         _path = manager.GetComponent<DatasetReader>().GetDatabasePath();
-
+        
+        UpdateDivsContent();
+        UpdateInterface();
+    }
+    
+    private void UpdateInterface()
+    { // chama algumas funções para atualizar os valores presentes na interface
+        manager.GetComponent<FilterManager>().SetDatabase(_dataset, _labelTypes, _datasetLabel);
+        DestroyAllFilters();
+        PopulateAxisDropdowns(false);
+        UpdateDropdownOptionsFilter();
+    }
+    
+    private void UpdateDivsContent()
+    {
         divLabels.GetComponentInChildren<Text>().text = "Database Labels: ";
         divTypes.GetComponentInChildren<Text>().text = "Content Types: "; 
         divContent.GetComponentInChildren<Text>().text = "Database Content: \n";
@@ -70,87 +90,73 @@ public class UIManager : MonoBehaviour
             }
             divContent.GetComponentInChildren<Text>().text += "\n";
         }
-        CallEssentialFunctions();
-    }
-
-    private void CallEssentialFunctions()
-    {
-        manager.GetComponent<FilterManager>().SetDatabase(_dataset, _labelTypes);
-        DestroyAllFilters();
-        PopulateVizDropdown(false);
-        UpdateDropdownOptions();
     }
     
-    public void CallByButton1()
+    
+    // Utilizada na Aba 2 para atualizar o dropdown de acordo com os atributos da base para que 
+    // os filtros sejam realizados corretamente
+    
+    public void UpdateDropdownOptionsFilter()
     {
-        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/carros_teste3.csv");
-        UpdateUI();
-    }
-    public void CallByButton2()
-    {
-        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/iris.csv");
-        UpdateUI();
-    }
-    public void CallByButton3()
-    {
-        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/pokemon.csv");
-        UpdateUI();
-    }
-    public void CallByButton4()
-    {
-        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/matrix_scatterplot.csv");
-        UpdateUI();
-    }
-    public void CallByButton5()
-    {
-        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/ufpapredios_fake.csv");
-        UpdateUI();
-    }
-
-    public void UpdateDropdownOptions()
-    {
-        dpdAttributes.options = new List<Dropdown.OptionData>();
+        Dropdown.OptionData tempData = new Dropdown.OptionData("- selecione -");
+        dpdAttributes.options = new List<Dropdown.OptionData> {tempData};
         
         foreach (string label in _datasetLabel)
         {
-            Dropdown.OptionData tempData = new Dropdown.OptionData(label);
+            tempData = new Dropdown.OptionData(label);
             dpdAttributes.options.Add(tempData);
         }
     }
+    
+    // insere um novo filtro na lista de filtros em 
+    // <filtermanager>.UpdateListOfFilters
+    // a cada filtro novo criado
 
     public void UpdateFilter()
     {
-        int index = dpdAttributes.value;
+        int index = dpdAttributes.value - 1; 
+        // -1 pq o item 0 sempre é " - selecione", que não deve 
+        // ser utilizado fazendo com que a array, AQUI, comece em 1
+
+        if (index < 0)
+        {
+            print("selecione pelo menos um filtro");
+            return;
+        }
+        
         Type tipo = _labelTypes[index];
         bool exist = false;
-        GameObject newFilter = new GameObject("Filter_" + index);
 
         if (_filters.Count != 0)
         {
             foreach (var filter in _filters)
             {
+                // verifica se o filtro selecionado pelo usuário já foi instanciado
+                // anteriormente e desliga a visualização dos que não forem selecionados.
                 filter.SetActive(false);
                 
                 if (filter.name != "Filter_" + index) continue;
-                
                 exist = true;
                 filter.SetActive(true);
             }
         }
 
-        if (exist) return;
+        if (exist) return; 
+        // se não existe, instancia novo filtro
         
-        newFilter = tipo != typeof(string) ? InitializeMinMaxSlider(index) : InitializeCheckGroup(index);
+        GameObject newFilter = tipo != typeof(string) ? InitializeMinMaxSlider(index) : InitializeCheckGroup(index);
         newFilter.name = "Filter_" + index;
-        
         _filters.Add(newFilter);
     }
+    
+    // funções utilizadas para instanciar um 
+    // minmaxslider = filtro continuo
+    // checkgroup = filtro categórico 
 
     private GameObject InitializeMinMaxSlider(int index)
     {
         Vector2 minMax = manager.GetComponent<ProjectUtils>().GetMinMaxValues(index, _dataset);
         GameObject slider = Instantiate(sliderTemplate, anchor.transform);
-        
         slider.GetComponent<MinMaxSliderBehavior>().UpdateMinMaxSlider(index, minMax);
         return slider;
     }
@@ -174,7 +180,31 @@ public class UIManager : MonoBehaviour
         _filters = new List<GameObject>();
         manager.GetComponent<FilterManager>().DestroyFilterList();
     }
+    
+    // na segunda aba, para atualizar o valor da div que contém a base filtrada.
+    public void UpdateDivOfFilteredDatabase()
+    {
+        List<string[]> filteredDatabase = manager.GetComponent<FilterManager>().GetFilteredDatabase();
 
+        if (filteredDatabase == null)
+        {
+            print("selecione pelo menos um filtro");
+            return;
+        }
+        
+        divFilteredContent.GetComponentInChildren<Text>().text = "Filtered Content: \n";
+        for(int i = 0; i < filteredDatabase.Count; i++)
+        {
+            string[] line = filteredDatabase[i];
+            foreach (string atribute in line)
+            {
+                divFilteredContent.GetComponentInChildren<Text>().text += atribute + " | ";
+            }
+            divFilteredContent.GetComponentInChildren<Text>().text += "\n";
+        }
+    }
+
+    // usado na terceira aba, quando o dropdown que contem os tipos da visualização é utilizado  
     public void OnVizDropdownValueChanged()
     {
         int index = dpdVizTypes.GetComponent<Dropdown>().value;
@@ -183,7 +213,7 @@ public class UIManager : MonoBehaviour
         switch (index)
         {
             case 1:
-                PopulateVizDropdown(false);
+                PopulateAxisDropdowns(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = false;
@@ -191,7 +221,7 @@ public class UIManager : MonoBehaviour
                 break;
             
             case 2:
-                PopulateVizDropdown(false);
+                PopulateAxisDropdowns(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = false;
@@ -199,7 +229,7 @@ public class UIManager : MonoBehaviour
                 break;
             
             case 3:
-                PopulateVizDropdown(false);
+                PopulateAxisDropdowns(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = true;
@@ -207,7 +237,7 @@ public class UIManager : MonoBehaviour
                 break;
             
             case 4:
-                PopulateVizDropdown(false);
+                PopulateAxisDropdowns(false);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = true;
@@ -215,7 +245,7 @@ public class UIManager : MonoBehaviour
                 break;
             
             case 5:
-                PopulateVizDropdown(true);
+                PopulateAxisDropdowns(true);
                 attDropdowns[0].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[1].GetComponent<Dropdown>().interactable = true;
                 attDropdowns[2].GetComponent<Dropdown>().interactable = true;
@@ -224,7 +254,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void PopulateVizDropdown(bool isScatterplot)
+    // utilizado para definir a label de cada atributos que irá em cada dropdown 
+    // referente aos eixos da visualização. Se for scatterplot, tudo continuo
+    private void PopulateAxisDropdowns(bool isScatterplot)
     {
         List<string> listOfOptions;
         Dropdown.OptionData tempData;
@@ -248,7 +280,6 @@ public class UIManager : MonoBehaviour
                     dpd.GetComponent<Dropdown>().options.Add(tempData);
                 }
             }
-            
             return;
         }
         
@@ -276,66 +307,52 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    
-    public void UpdateFilteredDatabaseDiv()
-    {
-        List<string[]> filteredDatabase = manager.GetComponent<FilterManager>().GetFilteredDatabase();
-        
-        divFilteredContent.GetComponentInChildren<Text>().text = "Filtered Content: \n";
-        for(int i = 0; i < filteredDatabase.Count; i++)
-        {
-            string[] line = filteredDatabase[i];
-            foreach (string atribute in line)
-            {
-                divFilteredContent.GetComponentInChildren<Text>().text += atribute + " | ";
-            }
-            divFilteredContent.GetComponentInChildren<Text>().text += "\n";
-        }
-    }
 
-    public void ButtonOfVisualizationCall(bool isFiltred)
+    // na terceira aba, por um dos dois botões que chamam as visualizações
+    public void VisualizationCall(bool isFiltred)
     {
         int index = dpdVizTypes.GetComponent<Dropdown>().value;
-        List<int> indexOfSelectedAttributes = new List<int>();
-
         string nameLabel = ifChartName.GetComponent<InputField>().text;
 
         if (nameLabel == "")
         {
-            nameLabel = "new chart";
+            nameLabel = "new chart"; //default name
         }
 
         GameObject visObject = isFiltred ? GameObject.Find("GenVizF") : GameObject.Find("GenVizD");
+        string filter = isFiltred ? manager.GetComponent<FilterManager>().GetFilters() : "";
+
+        ChartGenerator.ChartType chartType = ChartGenerator.ChartType.BarChartVertical;
         
         switch (index)
         {
             case 1:
-                visObject.GetComponent<VisualizationManager>().
-                    GenerateVisualization(ChartGenerator.ChartType.BarChartVertical, isFiltred, nameLabel);
+                chartType = ChartGenerator.ChartType.BarChartVertical;
                 break;
             
             case 2:
-                visObject.GetComponent<VisualizationManager>().
-                    GenerateVisualization(ChartGenerator.ChartType.PieChart, isFiltred, nameLabel);
+                chartType = ChartGenerator.ChartType.PieChart;
                 break;
             
             case 3:
-                visObject.GetComponent<VisualizationManager>().
-                    GenerateVisualization(ChartGenerator.ChartType.LineChart, isFiltred, nameLabel);
+                chartType = ChartGenerator.ChartType.LineChart;
                 break;
+            
             case 4:
-                visObject.GetComponent<VisualizationManager>().
-                    GenerateVisualization(ChartGenerator.ChartType.AreaChart, isFiltred, nameLabel);
+                chartType = ChartGenerator.ChartType.AreaChart;
                 break;
             
             case 5:
-                visObject.GetComponent<VisualizationManager>().
-                    GenerateVisualization(ChartGenerator.ChartType.Scatterplot, isFiltred, nameLabel);
+                chartType = ChartGenerator.ChartType.Scatterplot;
                 break;
         }
         
+        List<int> selectedAttributes = new List<int>(GetIndexOfSelectedAttributes());
+        visObject.GetComponent<VisualizationManager>().GenerateVisualization(chartType, nameLabel, filter, selectedAttributes);
     }
 
+    // usado para retornar uma lista de inteiros contendo
+    // o index de cada atributos selecionado nos AxisDropdowns
     public List<int> GetIndexOfSelectedAttributes()
     {
         List<int> list = new List<int>();
@@ -354,5 +371,37 @@ public class UIManager : MonoBehaviour
         }
         
         return list;
+    }
+    // Na primeira aba, os botões que possuem o nome das bases de dados chamam cada uma função abaixo
+    // para que a mesma seja lida e utilizada corretamente no projeto 
+    public void CallByButton1()
+    {
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/carros_teste3.csv");
+        genVizD.GetComponent<VisualizationManager>().datasetname = "cars";
+        genVizF.GetComponent<VisualizationManager>().datasetname = "cars";
+        SetNewDatabase();
+    }
+    public void CallByButton2()
+    {
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/iris.csv");
+        genVizD.GetComponent<VisualizationManager>().datasetname = "iris";
+        genVizF.GetComponent<VisualizationManager>().datasetname = "iris";
+        SetNewDatabase();
+        
+    }
+    public void CallByButton3()
+    {
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/automobile.csv");
+        genVizD.GetComponent<VisualizationManager>().datasetname = "automobile";
+        genVizF.GetComponent<VisualizationManager>().datasetname = "automobile";
+        SetNewDatabase();
+    }
+    
+    public void CallByButton4()
+    {
+        manager.GetComponent<DatasetReader>().ReadFile("Assets/Databases/ufpapredios_fake.csv");
+        genVizD.GetComponent<VisualizationManager>().datasetname = "ufpa";
+        genVizF.GetComponent<VisualizationManager>().datasetname = "ufpa";
+        SetNewDatabase();
     }
 }

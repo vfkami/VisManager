@@ -436,5 +436,15 @@ PrefabInstance:
       propertyPath: oldnumcolors
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3054321887182051311, guid: be92e8e03030b1b4db4bf4144118bf4b,
+        type: 3}
+      propertyPath: Dataset_name
+      value: automobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054321887182051311, guid: be92e8e03030b1b4db4bf4144118bf4b,
+        type: 3}
+      propertyPath: indexdataset
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be92e8e03030b1b4db4bf4144118bf4b, type: 3}

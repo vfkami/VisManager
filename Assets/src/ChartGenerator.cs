@@ -34,6 +34,10 @@ public class ChartGenerator : MonoBehaviour
     [SerializeField]
     private DataType Datatype = DataType.Manual;
     [SerializeField]
+    private String Dataset_name = "";
+    [SerializeField]
+    private String Filter = "";
+    [SerializeField]
     public Color Background = new Color(1, 1, 1);
     [SerializeField]
     private string Xlabel = "fruits";
@@ -90,6 +94,9 @@ public class ChartGenerator : MonoBehaviour
     public string w { get { return W; } set { W = value; if (autoupdate) getchart(); } }
     public Color[] colors { get { return Colors; } set { Colors = value; if (autoupdate) getchart(); } }
     public Color background { get { return Background; } set { Background = value; if (autoupdate) getchart(); } }
+    
+    public String dataset_name { get { return Dataset_name; } set { Dataset_name = value; if (autoupdate) getchart(); } }
+    public String filter { get { return Filter; } set { Filter = value; if (autoupdate) getchart(); } }
     public string base64string { get { return Base64string; } set { } }
 
     [SerializeField]
@@ -125,8 +132,12 @@ public class ChartGenerator : MonoBehaviour
     public void getchart()
     {
         if (verifyparameters()) {
-            string url = "http://localhost:3000/chartgen.html?x=" + x + "&y=" + y + "&chart=" + Charttype.ToString().ToLower();
-
+            string url = "";
+            if (Datatype == DataType.Manual)
+                url = "http://localhost:3000/chartgen.html?x=" + x + "&y=" + y + "&chart=" + Charttype.ToString().ToLower();
+            else 
+                url = "http://localhost:3000/generate/" + dataset_name + "/chartgen.html?x=" + x + "&y=" + y + "&chart=" + Charttype.ToString().ToLower();
+                
             if (maxdimensions() > 2)
                 url += "&z=" + z;
             if (maxdimensions() > 3)
@@ -153,6 +164,8 @@ public class ChartGenerator : MonoBehaviour
                 }
             }
 
+            url += "&filter=" + filter;
+            
             Debug.Log("Requisition: " + url);
             StartCoroutine(GetRequest(url));
         }

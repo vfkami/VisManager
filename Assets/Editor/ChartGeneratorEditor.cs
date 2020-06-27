@@ -11,7 +11,7 @@ public class ChartGeneratorEditor : Editor
     [SerializeField]
     ChartGenerator script;
 
-    ReadDatabaseGenVis datasetbuffer = new ReadDatabaseGenVis(); // TODO: buffer every dataset on a object (big think: is it possible to save on disk pkl like?)
+    // ReadDatabaseGenVis datasetbuffer = new ReadDatabaseGenVis(); // TODO: buffer every dataset on a object (big think: is it possible to save on disk pkl like?)
 
     void OnEnable()
     {
@@ -68,48 +68,29 @@ public class ChartGeneratorEditor : Editor
             }
             case ChartGenerator.DataType.Dataset:
             {
-                    string[] datasetpaths = { "outro", ReadDatabaseGenVis.file1, ReadDatabaseGenVis.file3};
-                    string[] datasetnames = { "outro", "iris", "carros"};
+                    string[] datasetnames = { "iris", "automobile"};
                     script.indexdataset = EditorGUILayout.Popup("Select dataset", script.indexdataset, datasetnames);
-                    if (script.indexdataset == 0)
-                    {
-                        string temppath = EditorGUILayout.TextField("dataset name:", datasetbuffer.path);
-                        if (temppath != datasetbuffer.path)
-                        {
-                            datasetbuffer = new ReadDatabaseGenVis(temppath);
-                            datasetbuffer.loadfile();
-                        }
-                    } else { 
-                        if (!datasetpaths[script.indexdataset].Equals(datasetbuffer.path))
-                        {
-                            datasetbuffer = new ReadDatabaseGenVis(datasetpaths[script.indexdataset]);
-                            datasetbuffer.loadfile();
-                        }
-                    }
-
+                    script.dataset_name = datasetnames[script.indexdataset];
+                    
+                    script.x = EditorGUILayout.TextField("Column X", script.x);
                     script.xlabel = EditorGUILayout.TextField("Label X", script.xlabel);
-                    script.xindex = EditorGUILayout.Popup("Column for X label", script.xindex, datasetbuffer.columnnames);
-                    script.x = System.String.Join(",", datasetbuffer.getColumn(datasetbuffer.columnnames[script.xindex]));
                     EditorGUILayout.Space();
 
+                    script.y = EditorGUILayout.TextField("Column Y", script.y);
                     script.ylabel = EditorGUILayout.TextField("Label Y", script.ylabel);
-                    script.yindex = EditorGUILayout.Popup("Column for Y label", script.yindex, datasetbuffer.columnnames);
-                    script.y = System.String.Join(",", datasetbuffer.getColumn(datasetbuffer.columnnames[script.yindex]));
                     EditorGUILayout.Space();
 
                     if (script.maxdimensions() > 2)
                     {
+                        script.z = EditorGUILayout.TextField("Column Z", script.z);
                         script.zlabel = EditorGUILayout.TextField("Label Z", script.zlabel);
-                        script.zindex = EditorGUILayout.Popup("Column for Z label", script.zindex, datasetbuffer.columnnames);
-                        script.z = System.String.Join(",", datasetbuffer.getColumn(datasetbuffer.columnnames[script.zindex]));
                         EditorGUILayout.Space();
                     }
 
                     if (script.maxdimensions() > 3)
                     {
+                        script.w = EditorGUILayout.TextField("Column W", script.w);
                         script.wlabel = EditorGUILayout.TextField("Label W", script.wlabel);
-                        script.windex = EditorGUILayout.Popup("Column for W label", script.windex, datasetbuffer.columnnames);
-                        script.w = System.String.Join(",", datasetbuffer.getColumn(datasetbuffer.columnnames[script.windex]));
                         EditorGUILayout.Space();
                     }
 
@@ -117,7 +98,7 @@ public class ChartGeneratorEditor : Editor
                     break;
             }
         }
-
+        script.filter = EditorGUILayout.TextField("Filter", script.filter);
 
         if (EditorApplication.isPlaying)
             Repaint();

@@ -7,16 +7,15 @@ using UnityEngine.UI;
 public class MinMaxSliderBehavior : MonoBehaviour
 {
     private int _id;
-
     private bool _invertedSelection;
 
     private List<string> _parameters = new List<string>();
     // Start is called before the first frame update
     public void UpdateMinMaxSlider(int index, Vector2 minMax)
     {
+        _id = index;
         GetComponentInChildren<MinMaxSlider>().SetValues(minMax.x, minMax.y, minMax.x, minMax.y);
         GetComponentInChildren<MinMaxSlider>().wholeNumbers = false;
-        _id = index;
     }
 
     public void OnValueChanged()
@@ -27,7 +26,7 @@ public class MinMaxSliderBehavior : MonoBehaviour
             GetComponentInChildren<Toggle>().isOn.ToString()
         };
         GameObject manager = GameObject.Find("Manager");
-        manager.GetComponent<FilterManager>().UpdateFilterListByIndex(_id, _parameters);
+        manager.GetComponent<FilterManager>().UpdateListOfFilters(_id, _parameters);
     }
     
 

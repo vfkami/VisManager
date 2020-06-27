@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIButtonBehavior : MonoBehaviour
 {
+    // define o comportamento dos botões responsáveis por mostrar as abas
+
     public GameObject Aba1;
     public GameObject Aba2;
     public GameObject Aba3;
@@ -27,7 +29,6 @@ public class UIButtonBehavior : MonoBehaviour
         Aba3.gameObject.SetActive(false);
         DefaultChart.gameObject.SetActive(false);
         FiltredChart.gameObject.SetActive(false);
-
     }
 
     public void ShowAba3()

@@ -37,12 +37,12 @@ public class TgroupBehavior : MonoBehaviour
         
         foreach (GameObject toggle in _checkBoxList)
         {
-            bool isOff = !toggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
+            bool isOn = toggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
             //se toggle desativado = adiciona a lista de parametros para deixarem de ser exibido
-            if (isOff){ _parameters.Add(toggle.GetComponentInChildren<Text>().text); } 
+            if (isOn){ _parameters.Add(toggle.GetComponentInChildren<Text>().text); } 
         }
         GameObject manager = GameObject.Find("Manager");
-        manager.GetComponent<FilterManager>().UpdateFilterListByIndex(_id, _parameters);
+        manager.GetComponent<FilterManager>().UpdateListOfFilters(_id, _parameters);
     }
 
     public List<string> GetParameters()
